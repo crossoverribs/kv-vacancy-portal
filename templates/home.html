@@ -1,0 +1,19 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+{% block content %}
+  <div class="text-center">
+    <h1 class="mb-4">Welcome to the KV Hyderabad Vacancy Portal</h1>
+    {% if session.username %}
+      <p class="lead">Logged in as <strong>{{ session.username }}</strong> ({{ session.role }})</p>
+      {% if session.role == 'data_entry' %}
+        <a href="/submit" class="btn btn-success">Submit Vacancy</a>
+      {% elif session.role == 'verifier' %}
+        <a href="/verify" class="btn btn-info">Verify Submissions</a>
+      {% elif session.role == 'admin' %}
+        <a href="/admin" class="btn btn-danger">Admin Dashboard</a>
+      {% endif %}
+    {% else %}
+      <p class="lead">Please login or register to begin.</p>
+    {% endif %}
+  </div>
+{% endblock %}
