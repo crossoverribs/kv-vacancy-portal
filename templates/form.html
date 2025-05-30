@@ -1,28 +1,23 @@
-<!-- templates/form.html -->
 {% extends 'base.html' %}
 {% block content %}
-<div class="row justify-content-center">
-  <div class="col-md-8">
-    <h2 class="mb-4 text-center">Submit Monthly Vacancy</h2>
-    <form method="post">
-      <div class="mb-3">
-        <label class="form-label">School Name</label>
-        <input type="text" name="school_name" class="form-control" required>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Month</label>
-        <input type="month" name="month" class="form-control" required>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Teacher Vacancies</label>
-        <input type="number" name="teacher_vacancies" class="form-control" required>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Non-Teaching Vacancies</label>
-        <input type="number" name="nonteaching_vacancies" class="form-control" required>
-      </div>
-      <button type="submit" class="btn btn-primary w-100">Submit</button>
-    </form>
+<h2 class="mb-4">Submit Monthly Vacancy</h2>
+<form method="POST" action="/submit">
+  <div class="mb-3">
+    <label>School Name</label>
+    <input type="text" class="form-control" name="school_name" required>
   </div>
-</div>
+  <div class="mb-3">
+    <label>Month</label>
+    <input type="month" class="form-control" name="month" required>
+  </div>
+  <div class="mb-3">
+    <label>Teacher Vacancies</label>
+    <input type="number" class="form-control" name="teacher_vacancies" required>
+  </div>
+  <div class="mb-3">
+    <label>Non-Teaching Vacancies</label>
+    <input type="number" class="form-control" name="nonteaching_vacancies" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 {% endblock %}
