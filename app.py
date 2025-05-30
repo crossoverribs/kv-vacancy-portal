@@ -38,5 +38,7 @@ def submit():
     return redirect('/')
 
 if __name__ == '__main__':
+    import os
     init_db()
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 10000))  # Render provides PORT
+    app.run(host='0.0.0.0', port=port)
