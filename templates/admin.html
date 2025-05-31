@@ -1,55 +1,18 @@
-<!-- templates/admin.html -->
 {% extends 'base.html' %}
 {% block content %}
-<h2 class="mb-4">Admin Dashboard</h2>
-<h4>User Editing Controls</h4>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Edit Access</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for user in users %}
-    <tr>
-      <td>{{ user[1] }}</td>
-      <td>{{ 'Yes' if user[2] else 'No' }}</td>
-      <td><a href="/toggle_edit/{{ user[0] }}" class="btn btn-sm btn-warning">Toggle Edit</a></td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-<h4 class="mt-5">All Vacancies</h4>
-<a href="/export" class="btn btn-success mb-3">Export to CSV</a>
-<table class="table table-bordered">
-  <thead class="table-light">
-    <tr>
-      <th>ID</th>
-      <th>User ID</th>
-      <th>School</th>
-      <th>Month</th>
-      <th>Teachers</th>
-      <th>Non-Teaching</th>
-      <th>Verified</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for row in records %}
-    <tr>
-      <td>{{ row[0] }}</td>
-      <td>{{ row[1] }}</td>
-      <td>{{ row[2] }}</td>
-      <td>{{ row[3] }}</td>
-      <td>{{ row[4] }}</td>
-      <td>{{ row[5] }}</td>
-      <td>{{ 'Yes' if row[6] else 'No' }}</td>
-      <td><a href="/delete/{{ row[0] }}" class="btn btn-sm btn-danger">Delete</a></td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+<h2>Admin Login</h2>
+<form method="POST">
+  <div class="mb-3">
+    <label>Username</label>
+    <input type="text" name="username" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>Password</label>
+    <input type="password" name="password" class="form-control" required>
+  </div>
+  {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+  {% endif %}
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
 {% endblock %}
